@@ -1,0 +1,46 @@
+:host {
+    .button {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .contact-card {
+        display: grid;
+        width: 25%;
+        margin: 1rem auto;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .gray-text {
+        color: rgba(0,0,0,.54);
+    }
+
+    mat-card-header {
+        width: 100%;
+        background-color: #673ab7;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
+    mat-card-title {
+        color: white;
+        margin: 0.5rem 0;
+        
+    }
+
+    mat-radio-button {
+        padding-right: 1rem;
+    }
+
+    .lower-space {
+        margin-bottom: 1rem;
+    }
+
+    .upper-space {
+        margin-top: 0.5rem;
+    }
+}

@@ -1,0 +1,80 @@
+<div>
+    <div class="container">
+        <!-- Filter -->
+        <div>
+            <mat-form-field>
+                <mat-label>Filtrar Heroes</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Entra nombre o #">
+            </mat-form-field>
+        </div>
+        <!-- Heroe's table -->
+        <div class="mat-elevation-z8">
+            <table mat-table *ngIf="heroesList" [dataSource]="heroesList">
+                <ng-container [matColumnDef]="column" *ngFor="let column of columns; let ind = index">
+                    <div *ngIf="column !== 'borrar' && column !== 'editar'">
+                        <th mat-header-cell *matHeaderCellDef ngClass="{'label-auto': !ind, 'label': ind}" > {{colTitles[ind] | uppercase}} </th>
+                        <td mat-cell *matCellDef="let heroe">
+                            <div class="center-item" *ngIf="(heroe[column] | typeof) === 'boolean' && heroe[column]">
+                                <mat-icon class="green">check_circle_outline</mat-icon>
+                            </div>
+                            <div class="center-item" *ngIf="(heroe[column] | typeof) === 'boolean' && !heroe[column]">
+                                <mat-icon color="warn">remove_circle_outline</mat-icon>
+                            </div>
+                            <span class="text" *ngIf="(heroe[column] | typeof) === 'string'">
+                                {{heroe[column] | titlecase}}
+                            </span>
+                            <span class="text" *ngIf="(heroe[column] | typeof) === 'number'">
+                                {{heroe[column]}}
+                            </span>
+                        </td>
+                    </div>
+                    <div class="editar" *ngIf="column === 'editar'">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let j=index;">
+                        <button
+                            title="Editar"
+                            class="editar"
+                            mat-raised-button
+                            focusable="false"
+                            (click)="borrarElemento(j)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        </td>
+                    </div>
+                    <div *ngIf="column === 'borrar'">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let j=index;">
+                        <button
+                            title="Eliminar"
+                            mat-raised-button
+                            color="warn"
+                            focusable="false"
+                            (click)="borrarElemento(j)">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                        </td>
+                    </div>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="columns"></tr>
+                <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+            </table>
+            <mat-paginator 
+                pageSize="5"
+                color="primary"
+                showFirstLastButtons
+                aria-label="Selecciona página de heroes">
+            </mat-paginator>
+        </div>
+        <!-- Add heroe -->
+        <div class="newhero">
+            <button
+                title="Añadir nuevo heroe"
+                mat-raised-button
+                color="primary"
+                focusable="true"
+                (click)="addHero()">
+                <mat-icon>add</mat-icon>Añadir nuevo héroe
+            </button>
+        </div>
+    </div>
+</div>

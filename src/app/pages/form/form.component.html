@@ -1,0 +1,65 @@
+<div>
+    <mat-card class="container contact-card">
+        <mat-card-header>
+          <mat-card-title>Añade un nuevo héroe</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="formGroup">
+                <div class="row">
+                    <mat-form-field class="full-width">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput id="name" formControlName="name" type="text" placeholder="Entra su nombre">
+                        <div *ngIf="formGroup.controls['name'].invalid && 
+                            (formGroup.controls['name'].dirty || formGroup.controls['name'].touched)">
+                            <small class="text-danger"
+                                *ngIf="formGroup.controls['name'].hasError('required')">
+                                El nombre es obligatorio
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="formGroup.controls['name'].hasError('minlength')">
+                                El nombre ha de tener 2 letras
+                            </small>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="full-width">
+                        <mat-label>Nombre Real</mat-label>
+                        <input matInput color="primary" formControlName="realName" type="text" placeholder="Entra su nombre real">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Edad</mat-label>
+                        <input matInput formControlName="age" type="number" placeholder="Entra su edad">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="full-width">
+                        <mat-label>Poder</mat-label>
+                        <input matInput formControlName="power" type="text" placeholder="Entra su poder">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-label class="gray-text">Proviene de la Tierra?</mat-label>
+                    <div class="row upper-space">
+                        <mat-radio-group color="primary" formControlName="earthOrigin">
+                            <mat-radio-button value="1">Si</mat-radio-button>
+                            <mat-radio-button value="2">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="row button">
+                    <button
+                        title="Añadir nuevo heroe"
+                        mat-raised-button
+                        color="primary"
+                        focusable="true"
+                        (click)="addHero()">
+                        <mat-icon>add</mat-icon>Añadir este héroe
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
