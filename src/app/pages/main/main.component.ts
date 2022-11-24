@@ -9,6 +9,7 @@ import { Heroe } from 'src/app/interfaces/heroes.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-main',
@@ -25,7 +26,8 @@ export class MainComponent implements OnInit {
   
   constructor(
     private heroesSVC: HeroesService,
-    private router: Router
+    private router: Router,
+    private alertSVC: AlertService
   ){}
 
   ngOnInit(): void {

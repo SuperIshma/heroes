@@ -1,0 +1,20 @@
+:host {
+    .alert-danger {
+        background-color: #f89089;
+    }
+    
+    .alert-success {
+        background-color: #c3fbcd;
+    } 
+    
+    .alert{
+        position: absolute;
+        top: 4rem;
+        right: 2rem;
+        border-radius: 10px;
+        padding: 20px;
+        color: black;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+}

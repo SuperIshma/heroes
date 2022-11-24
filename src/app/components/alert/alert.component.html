@@ -1,0 +1,3 @@
+<div *ngIf="event" class="position" [ngClass]="{ 'alert': event, 'alert-success': event.type === 'success', 'alert-danger': event.type === 'error' }">
+    <span>{{event.message}}</span>
+</div>

@@ -8,6 +8,7 @@ import { HeroesService } from 'src/app/services/heroes-service';
 import { Heroe } from 'src/app/interfaces/heroes.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-form',
@@ -27,6 +28,7 @@ export class FormComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private alertSVC: AlertService,
     private formBuilder: FormBuilder,
     private heroesSVC: HeroesService,
     private router: Router
@@ -82,9 +84,11 @@ export class FormComponent implements OnInit {
     this.updateEarthOriginValue();
     this.heroesSVC.addHero(this.formGroup.value).subscribe({
       next: () => {
+        this.alertSVC.success("El héroe se añadió correctamente.");
         this.cancel();
       },
       error: (err) => {
+        this.alertSVC.error("Hubo un problema al añadir al héroe.");
         console.log('Error: ', err);
       }
     });
@@ -98,9 +102,11 @@ export class FormComponent implements OnInit {
     this.updateEarthOriginValue();
     this.heroesSVC.updateHeroe(this.formGroup.value, this.heroPlain.id).subscribe({
       next: () => {
+        this.alertSVC.success("El héroe se modificó correctamente.");
         this.cancel();
       },
       error: (err) => {
+        this.alertSVC.error("Hubo un problema al modificar al héroe.");
         console.log('Error: ', err);
       }
     });

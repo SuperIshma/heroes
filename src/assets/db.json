@@ -25,12 +25,12 @@
       "id": 3
     },
     {
-      "id": 4,
       "name": "El hombre araña",
       "realName": "Alberto Díaz",
       "age": 41,
       "power": "Tiene uñas indestructibles",
-      "earthOrigin": true
+      "earthOrigin": true,
+      "id": 4
     },
     {
       "name": "SuperChica",
@@ -41,19 +41,19 @@
       "id": 5
     },
     {
-      "id": 6,
       "name": "MegaHombre",
       "realName": "Liberio Sainz",
       "age": 36,
       "power": "Puede crecer hasta los 100 metros",
-      "earthOrigin": false
+      "earthOrigin": false,
+      "id": 6
     },
     {
       "name": "SuperIshma",
       "realName": "Ismael Sunyer",
       "age": 51,
       "power": "Tiene de todo",
-      "earthOrigin": "1",
+      "earthOrigin": true,
       "id": 7
     },
     {
