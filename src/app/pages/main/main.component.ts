@@ -10,6 +10,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-main',
@@ -25,9 +28,10 @@ export class MainComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   
   constructor(
+    private alertSVC: AlertService,
+    public dialog: MatDialog,
     private heroesSVC: HeroesService,
     private router: Router,
-    private alertSVC: AlertService
   ){}
 
   ngOnInit(): void {
@@ -50,17 +54,25 @@ export class MainComponent implements OnInit {
     }
   }
 
-  public deleteHero(index: number) {
-    this.heroesSVC.deleteHero(index).subscribe({
-      next: () => {
-        this.getHeroesData();
-      },
-      error: (error) => console.log(error)
-    });
+  public onDeleteHero(index: number) {
+    this.openDialog(index);
   }
 
   public editHero(index: number):void {
     this.router.navigate(['/form', index]);
+  }
+
+  private deleteHero(index: number) {
+    this.heroesSVC.deleteHero(index).subscribe({
+      next: () => {
+        this.alertSVC.success("El héroe se eliminó correctamente.");
+        this.getHeroesData();
+      },
+      error: (error) => {
+        this.alertSVC.error("Hubo un problema eliminando al héroe.");
+        console.log(error);
+      }
+    });
   }
 
   private getHeroesData(): void {
@@ -71,6 +83,20 @@ export class MainComponent implements OnInit {
           this.heroesList.paginator = this.paginator;
       },
       error: (err) => console.log(err)
+    });
+  }
+
+  private openDialog(heroId: number): void {
+    const heroName = this.heroesList.data.find((el: Heroe) => el.id === heroId).name
+    const message: string = `Eliminarás a ${heroName} de la base de datos`;
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {message}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteHero(heroId);
+      }
     });
   }
 

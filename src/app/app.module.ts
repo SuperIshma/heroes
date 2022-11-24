@@ -11,11 +11,14 @@ import { ApiInterceptor } from './interceptor/api.interceptor';
 import { HeroesService } from './services/heroes-service';
 import { AlertService } from './services/alert.service';
 import { AlertComponent } from './components/alert/alert.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AlertComponent,
     AppComponent,
+    DialogComponent,
     HeaderComponent
   ],
   imports: [
@@ -28,6 +31,11 @@ import { AlertComponent } from './components/alert/alert.component';
   providers: [
     AlertService,
     HeroesService,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
     {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

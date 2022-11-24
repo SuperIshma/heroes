@@ -49,20 +49,12 @@
       "id": 6
     },
     {
-      "name": "SuperIshma",
-      "realName": "Ismael Sunyer",
-      "age": 51,
-      "power": "Tiene de todo",
-      "earthOrigin": true,
+      "name": "Super Buen Tio",
+      "realName": "Pedro Andujar",
+      "age": 43,
+      "power": "Es super majo",
+      "earthOrigin": false,
       "id": 7
-    },
-    {
-      "name": "SuperPan",
-      "realName": "Andrés Iniesta",
-      "age": 33,
-      "power": "Lanza barras de pan y suca",
-      "earthOrigin": "2",
-      "id": 8
     }
   ]
 }
