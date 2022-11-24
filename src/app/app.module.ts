@@ -15,13 +15,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginatorIntlEs } from './pages/main/paginator-es';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AlertComponent,
     AppComponent,
     DialogComponent,
-    HeaderComponent
+    HeaderComponent,
+    SpinnerComponent
   ],
   imports: [
     AppRoutingModule,

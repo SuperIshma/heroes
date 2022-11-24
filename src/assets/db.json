@@ -1,23 +1,23 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "El hombre opaco",
-      "realName": "Antonio García",
+      "name": "EL HOMBRE OPACO",
+      "realName": "Faemino Cansado",
       "age": 27,
       "power": "No deja pasar la luz",
-      "earthOrigin": true
+      "earthOrigin": true,
+      "id": 1
     },
     {
-      "name": "La mujer araña",
+      "name": "LA MUJER ARAÑA",
       "realName": "Elena López",
       "age": 21,
-      "power": "Lanza telarañas",
+      "power": "Cuando se enfada, se sube por las paredes",
       "earthOrigin": true,
       "id": 2
     },
     {
-      "name": "SuperFly",
+      "name": "SUPERFLY",
       "realName": "Kal-El",
       "age": 33,
       "power": "Vuela",
@@ -25,7 +25,7 @@
       "id": 3
     },
     {
-      "name": "El hombre araña",
+      "name": "EL HOMBRE ARAÑA",
       "realName": "Alberto Díaz",
       "age": 41,
       "power": "Tiene uñas indestructibles",
@@ -33,28 +33,20 @@
       "id": 4
     },
     {
-      "name": "SuperChica",
+      "name": "SUPERCHICA",
       "realName": "Kal-Ela",
       "age": 25,
-      "power": "Super fuerza",
+      "power": "Es muy pequeña",
       "earthOrigin": false,
       "id": 5
     },
     {
-      "name": "MegaHombre",
+      "name": "MEGAHOMBRE",
       "realName": "Liberio Sainz",
       "age": 36,
       "power": "Puede crecer hasta los 100 metros",
       "earthOrigin": false,
       "id": 6
-    },
-    {
-      "name": "Super Buen Tio",
-      "realName": "Pedro Andujar",
-      "age": 43,
-      "power": "Es super majo",
-      "earthOrigin": false,
-      "id": 7
     }
   ]
 }
