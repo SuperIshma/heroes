@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { ApiInterceptor } from './interceptor/api.interceptor';
+import { HeroesService } from './services/heroes-service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ApiInterceptor } from './interceptor/api.interceptor';
     MaterialModule
   ],
   providers: [
+    HeroesService,
     {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

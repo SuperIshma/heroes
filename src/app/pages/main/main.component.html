@@ -9,8 +9,65 @@
         </div>
         <!-- Heroe's table -->
         <div class="mat-elevation-z8">
-            <table mat-table *ngIf="heroesList" [dataSource]="heroesList">
-                <ng-container [matColumnDef]="column" *ngFor="let column of columns; let ind = index">
+            <table mat-table *ngIf="heroesList" [dataSource]="heroesList" class="mat-elevation-z8">
+                <ng-container matColumnDef="id">
+                    <th *matHeaderCellDef>#</th>
+                    <td *matCellDef="let heroe" class="label-auto">{{heroe.id}}</td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th *matHeaderCellDef>Nombre</th>
+                    <td *matCellDef="let heroe" class="text">{{heroe.name}}</td>
+                </ng-container>
+                <ng-container matColumnDef="realName">
+                    <th *matHeaderCellDef>Nombre real</th>
+                    <td *matCellDef="let heroe" class="text">{{heroe.realName}}</td>
+                </ng-container>
+                <ng-container matColumnDef="age">
+                    <th *matHeaderCellDef>Edad</th>
+                    <td *matCellDef="let heroe">{{heroe.age}}</td>
+                </ng-container>
+                <ng-container matColumnDef="power">
+                    <th *matHeaderCellDef>Poder</th>
+                    <td *matCellDef="let heroe" class="text">{{heroe.power}}</td>
+                </ng-container>
+                <ng-container matColumnDef="earthOrigin">
+                    <th *matHeaderCellDef>Terrestre?</th>
+                    <td *matCellDef="let heroe">
+                        <div class="center-item" *ngIf="heroe.earthOrigin">
+                            <mat-icon class="green">check_circle_outline</mat-icon>
+                        </div>
+                        <div class="center-item" *ngIf="!heroe.earthOrigin">
+                            <mat-icon color="warn">remove_circle_outline</mat-icon>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="editar">
+                    <th *matHeaderCellDef> </th>
+                    <td *matCellDef="let heroe">
+                        <button
+                            title="Editar"
+                            class="editar"
+                            mat-raised-button
+                            focusable="false"
+                            (click)="editHero(heroe.id)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="borrar">
+                    <th *matHeaderCellDef> </th>
+                    <td *matCellDef="let heroe">
+                        <button
+                            title="Eliminar"
+                            mat-raised-button
+                            color="warn"
+                            focusable="false"
+                            (click)="deleteHero(heroe.id)">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <!-- <ng-container [matColumnDef]="column" *ngFor="let column of columns; let ind = index">
                     <div *ngIf="column !== 'borrar' && column !== 'editar'">
                         <th mat-header-cell *matHeaderCellDef ngClass="{'label-auto': !ind, 'label': ind}" > {{colTitles[ind] | uppercase}} </th>
                         <td mat-cell *matCellDef="let heroe">
@@ -54,7 +111,7 @@
                         </button>
                         </td>
                     </div>
-                </ng-container>
+                </ng-container> -->
                 <tr mat-header-row *matHeaderRowDef="columns"></tr>
                 <tr mat-row *matRowDef="let row; columns: columns;"></tr>
             </table>

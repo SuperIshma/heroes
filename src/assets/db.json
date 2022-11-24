@@ -1,52 +1,68 @@
 {
-    "heroes": [
-        {
-            "id": 1,
-            "name": "El hombre opaco",
-            "realName": "Antonio García",
-            "age": 27,
-            "power": "No deja pasar la luz",
-            "earthOrigin": true
-        },
-        {
-            "id": 2,
-            "name": "La mujer araña",
-            "realName": "Elena López",
-            "age": 21,
-            "power": "Lanza telarañas",
-            "earthOrigin": true
-        },
-        {
-            "id": 3,
-            "name": "SuperFly",
-            "realName": "Kal-El",
-            "age": 33,
-            "power": "Vuela",
-            "earthOrigin": false
-        },
-        {
-            "id": 4,
-            "name": "El hombre araña",
-            "realName": "Alberto Díaz",
-            "age": 41,
-            "power": "Tiene uñas indestructibles",
-            "earthOrigin": true
-        },
-        {
-            "id": 5,
-            "name": "SuperChica",
-            "realName": "Kal-Ela",
-            "age": 25,
-            "power": "Super fuerza",
-            "earthOrigin": false
-        },
-        {
-            "id": 6,
-            "name": "MegaHombre",
-            "realName": "Liberio Sainz",
-            "age": 36,
-            "power": "Puede crecer hasta los 100 metros",
-            "earthOrigin": false
-        }
-    ]
+  "heroes": [
+    {
+      "id": 1,
+      "name": "El hombre opaco",
+      "realName": "Antonio García",
+      "age": 27,
+      "power": "No deja pasar la luz",
+      "earthOrigin": true
+    },
+    {
+      "name": "La mujer araña",
+      "realName": "Elena López",
+      "age": 21,
+      "power": "Lanza telarañas",
+      "earthOrigin": true,
+      "id": 2
+    },
+    {
+      "name": "SuperFly",
+      "realName": "Kal-El",
+      "age": 33,
+      "power": "Vuela",
+      "earthOrigin": false,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "name": "El hombre araña",
+      "realName": "Alberto Díaz",
+      "age": 41,
+      "power": "Tiene uñas indestructibles",
+      "earthOrigin": true
+    },
+    {
+      "name": "SuperChica",
+      "realName": "Kal-Ela",
+      "age": 25,
+      "power": "Super fuerza",
+      "earthOrigin": false,
+      "id": 5
+    },
+    {
+      "id": 6,
+      "name": "MegaHombre",
+      "realName": "Liberio Sainz",
+      "age": 36,
+      "power": "Puede crecer hasta los 100 metros",
+      "earthOrigin": false
+    },
+    {
+      "name": "SuperIshma",
+      "realName": "Ismael Sunyer",
+      "age": 51,
+      "power": "Tiene de todo",
+      "earthOrigin": "1",
+      "id": 7
+    },
+    {
+      "name": "SuperPan",
+      "realName": "Andrés Iniesta",
+      "age": 33,
+      "power": "Lanza barras de pan y suca",
+      "earthOrigin": "2",
+      "id": 8
+    }
+  ]
 }

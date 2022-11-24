@@ -24,8 +24,6 @@ import { MainRoutingModule } from './main-routing.module';
     MainRoutingModule,
     MaterialModule
   ],
-  providers: [
-    HeroesService
-  ],
+  providers: [],
 })
 export class MainModule { }

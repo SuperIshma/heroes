@@ -29,19 +29,13 @@ export class MainComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.heroesSVC.getHeroes().subscribe({
-        next: (data: Heroe[]) => {
-            this.heroesSVC.setHeroesData(data);
-            this.heroesList = new MatTableDataSource<Heroe>(data);
-            this.heroesList.paginator = this.paginator;
-        },
-        error: (err) => console.log(err)
-    });
+    this.getHeroesData();
   }
 
-  public addHero(): void {
-    this.router.navigate(['/form'])
+  public addHero():void {
+    this.router.navigate(['/form']);
   }
+
   public applyFilter(event: Event) {
     let filterValue = (event.target as HTMLInputElement).value.toLowerCase();
     if (filterValue) {
@@ -54,8 +48,28 @@ export class MainComponent implements OnInit {
     }
   }
 
-  public borrarElemento(index: number) {
-    console.log(index);
+  public deleteHero(index: number) {
+    this.heroesSVC.deleteHero(index).subscribe({
+      next: () => {
+        this.getHeroesData();
+      },
+      error: (error) => console.log(error)
+    });
+  }
+
+  public editHero(index: number):void {
+    this.router.navigate(['/form', index]);
+  }
+
+  private getHeroesData(): void {
+    this.heroesSVC.getHeroes().subscribe({
+      next: (data: Heroe[]) => {
+          this.heroesSVC.setHeroesData(data);
+          this.heroesList = new MatTableDataSource<Heroe>(data);
+          this.heroesList.paginator = this.paginator;
+      },
+      error: (err) => console.log(err)
+    });
   }
 
   private setFilterResults(result: Heroe[]): void {

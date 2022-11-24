@@ -1,7 +1,7 @@
-<div>
+<div *ngIf="show">
     <mat-card class="container contact-card">
         <mat-card-header>
-          <mat-card-title>Añade un nuevo héroe</mat-card-title>
+          <mat-card-title>{{title}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <form [formGroup]="formGroup">
@@ -17,7 +17,7 @@
                             </small>
                             <small class="text-danger"
                                 *ngIf="formGroup.controls['name'].hasError('minlength')">
-                                El nombre ha de tener 2 letras
+                                El nombre ha de tener mínimo 2 letras
                             </small>
                         </div>
                     </mat-form-field>
@@ -26,18 +26,51 @@
                     <mat-form-field class="full-width">
                         <mat-label>Nombre Real</mat-label>
                         <input matInput color="primary" formControlName="realName" type="text" placeholder="Entra su nombre real">
+                        <div *ngIf="formGroup.controls['realName'].invalid && 
+                            (formGroup.controls['realName'].dirty || formGroup.controls['realName'].touched)">
+                            <small class="text-danger"
+                                *ngIf="formGroup.controls['realName'].hasError('required')">
+                                El nombre real es obligatorio
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="formGroup.controls['realName'].hasError('minlength')">
+                                El nombre real ha de tener mínimo 2 letras
+                            </small>
+                        </div>
                     </mat-form-field>
                 </div>
                 <div class="row">
                     <mat-form-field>
                         <mat-label>Edad</mat-label>
                         <input matInput formControlName="age" type="number" placeholder="Entra su edad">
+                        <div *ngIf="formGroup.controls['age'].invalid && 
+                            (formGroup.controls['age'].dirty || formGroup.controls['age'].touched)">
+                            <small class="text-danger"
+                                *ngIf="formGroup.controls['age'].hasError('required')">
+                                La edad es obligatoria
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="formGroup.controls['age'].hasError('min')">
+                                La edad mínima es de 18 años
+                            </small>
+                        </div>
                     </mat-form-field>
                 </div>
                 <div class="row">
                     <mat-form-field class="full-width">
                         <mat-label>Poder</mat-label>
                         <input matInput formControlName="power" type="text" placeholder="Entra su poder">
+                        <div *ngIf="formGroup.controls['power'].invalid && 
+                            (formGroup.controls['power'].dirty || formGroup.controls['power'].touched)">
+                            <small class="text-danger"
+                                *ngIf="formGroup.controls['power'].hasError('required')">
+                                El poder es obligatorio
+                            </small>
+                            <small class="text-danger"
+                                *ngIf="formGroup.controls['power'].hasError('minlength')">
+                                El poder ha de tener mínimo 2 letras
+                            </small>
+                        </div>
                     </mat-form-field>
                 </div>
                 <div class="row">
@@ -55,8 +88,17 @@
                         mat-raised-button
                         color="primary"
                         focusable="true"
-                        (click)="addHero()">
-                        <mat-icon>add</mat-icon>Añadir este héroe
+                        (click)="saveData()">
+                        <mat-icon>{{icon}}</mat-icon>{{buttonText}}
+                    </button>
+                    <button
+                        class="cancelar"
+                        title="Cancelar"
+                        mat-raised-button
+                        color="warn"
+                        focusable="true"
+                        (click)="cancel()">
+                        <mat-icon>cancel</mat-icon>Cancelar
                     </button>
                 </div>
             </form>
