@@ -9,10 +9,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { ApiInterceptor } from './interceptor/api.interceptor';
 import { HeroesService } from './services/heroes-service';
-import { AlertService } from './services/alert.service';
+import { AlertService } from './components/alert/service/alert.service';
 import { AlertComponent } from './components/alert/alert.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginatorIntlEs } from './pages/main/paginator-es';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
   providers: [
     AlertService,
     HeroesService,
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    {
-      provide: MatDialogRef,
-      useValue: {}
-    },
+    {provide: MAT_DIALOG_DATA, useValue: {}},
+    {provide: MatDialogRef, useValue: {}},
+    {provide: MatPaginatorIntl, useClass: MatPaginatorIntlEs},
     {provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

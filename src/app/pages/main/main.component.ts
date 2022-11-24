@@ -1,17 +1,11 @@
-// Core
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-// Services
 import { HeroesService } from 'src/app/services/heroes-service';
-
-// Interfaces
-import { Heroe } from 'src/app/interfaces/heroes.interface';
+import { Heroe } from 'src/app/shared/interfaces/heroes.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { AlertService } from 'src/app/services/alert.service';
+import { AlertService } from 'src/app/components/alert/service/alert.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 
 @Component({
@@ -21,15 +15,15 @@ import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 })
 export class MainComponent implements OnInit {
   
-  public colTitles = ['#', 'nombre', 'nombre real', 'edad', 'poder', 'Terrestre?'];
   public columns:string[] = ['id', 'name', 'realName', 'age', 'power', 'earthOrigin', 'editar', 'borrar'];
   public heroesList!: any;
 
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   
   constructor(
-    private alertSVC: AlertService,
     public dialog: MatDialog,
+
+    private alertSVC: AlertService,
     private heroesSVC: HeroesService,
     private router: Router,
   ){}
@@ -54,16 +48,17 @@ export class MainComponent implements OnInit {
     }
   }
 
-  public onDeleteHero(index: number) {
-    this.openDialog(index);
+  public editHero(heroId: number):void {
+    this.router.navigate(['/form', heroId]);
   }
 
-  public editHero(index: number):void {
-    this.router.navigate(['/form', index]);
+  public onDeleteHero(heroId: number) {
+    this.openDialog(heroId);
   }
 
-  private deleteHero(index: number) {
-    this.heroesSVC.deleteHero(index).subscribe({
+  ///////// PRIVATE METHODS
+  private deleteHero(heroId: number) {
+    this.heroesSVC.deleteHero(heroId).subscribe({
       next: () => {
         this.alertSVC.success("El héroe se eliminó correctamente.");
         this.getHeroesData();
@@ -77,12 +72,15 @@ export class MainComponent implements OnInit {
 
   private getHeroesData(): void {
     this.heroesSVC.getHeroes().subscribe({
-      next: (data: Heroe[]) => {
-          this.heroesSVC.setHeroesData(data);
-          this.heroesList = new MatTableDataSource<Heroe>(data);
+      next: (heroes: Heroe[]) => {
+          this.heroesSVC.setHeroesData(heroes);
+          this.heroesList = new MatTableDataSource<Heroe>(heroes);
           this.heroesList.paginator = this.paginator;
       },
-      error: (err) => console.log(err)
+      error: (err) => {
+        this.alertSVC.error('Ocurrió un error recuperando la lista de héroes.');
+        console.log(err);
+      }
     });
   }
 

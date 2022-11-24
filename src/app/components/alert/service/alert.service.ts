@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { AlertEvent } from '../interfaces/alert.interface';
+import { AlertEvent } from '../alert.interface';
 
 @Injectable()
 export class AlertService {

@@ -1,10 +1,7 @@
-// Core
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
-
-// Interfaces
-import { Heroe } from "../interfaces/heroes.interface";
+import { Observable } from "rxjs";
+import { Heroe } from "../shared/interfaces/heroes.interface";
 
 @Injectable({providedIn: 'root'})
 export class HeroesService {
