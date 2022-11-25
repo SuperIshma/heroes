@@ -11,12 +11,10 @@ export class SpinnerService {
   constructor() {}
 
   public show() {
-    console.log('showing');
      this.isLoading.next(true);
   }
 
   public hide() {
-    console.log('hiding');
      this.isLoading.next(false);
   }
 }
