@@ -21,6 +21,6 @@ export class ApiInterceptor implements HttpInterceptor {
     });
     return next.handle(cloneRequest)
       .pipe(finalize(() => {
-        setTimeout(() => {this.spinnerSVC.hide();}, 2000);})) // This timeout is to be able to see the spinner
+        setTimeout(() => {this.spinnerSVC.hide();}, 1000);})) // This timeout is to be able to see the spinner
   }
 }
