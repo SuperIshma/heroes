@@ -10,5 +10,5 @@ import { Subject } from 'rxjs';
 export class SpinnerComponent {
   public isLoading: Subject<boolean> = this.spinnerSVC.isLoading;
 
-  constructor(private spinnerSVC: SpinnerService) {console.log('spinner!');}
+  constructor(private spinnerSVC: SpinnerService) {}
 }
