@@ -35,7 +35,7 @@ export class FormComponent implements OnInit {
     } else {
       const heroId = this.activatedRoute.snapshot.params['id'];
       if (heroId) {
-        this.heroPlain = this.heroesSVC.heroesData.filter((hero:Heroe) => hero.id === parseInt(heroId))[0];
+        this.heroPlain = this.heroesSVC.getHeroById(parseInt(heroId))[0];
         this.isEdit = true;
         this.title = 'Modifica los datos del héroe';
         this.buttonText = 'Guardar modificaciones';
